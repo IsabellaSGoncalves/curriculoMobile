@@ -1,12 +1,35 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { Linking, StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 
 const App = () => {
   const [height, setHeight] = useState(100);
 
+  const linkedInimage = require('./images/LinkedIcon.png')
+  const githubIcon = require('./images/iconGithub.png')
+  const mailIcon = require('./images/mailIcon.png')
+  const outLookIcon = require('./images/OutlookIcon.png')
+  const perfilGithub = require('./images/perfilGithub.png')
+
   const toggleHeight = () => {
     setHeight(prev => (prev === 100 ? 150 : 100));
   };
+
+  const OpenLinkLinkedIN = () => {
+    Linking.openURL('https://www.linkedin.com/in/isabella-da-silva-gon%C3%A7alves-504b032b6/')
+  }
+
+  const OpenLinkEmail = () => {
+    Linking.openURL('mailto:isabelllacom2l@gmail.com')
+  }
+
+  const OpenLinkGithub = () => {
+    Linking.openURL('https://github.com/IsabellaSGoncalves')
+  }
+
+  const OpenLinkOutlook = () => {
+    Linking.openURL('mailto:isabella.goncalves2025@outlook.com')
+  }
+
 
   return (
     <ScrollView>
@@ -15,53 +38,60 @@ const App = () => {
         <View style={styles.backgroundImage}>
 
           <Image
-            source={{ uri: 'https://avatars.githubusercontent.com/u/161075154?v=4' }}
-            style={styles.image}  
+            source={perfilGithub}
+            style={styles.image}
           />
         </View>
 
         <View style={styles.big_container}>
           <View style={styles.container_namePrincipal}>
-            <Text style={{ color: 'white' }}>Isabella da Silva Gonçalves</Text>
+            <Text style={styles.text_title}>Isabella da Silva Gonçalves</Text>
 
           </View>
           <View style={styles.container_nameSecond}>
-            <Text style={{ color: 'white' }}>Estudante de Desenvolvimento de Software Multiplataforma</Text>
+            <Text style={styles.text}>Estudante de Desenvolvimento de Software Multiplataforma</Text>
           </View>
 
         </View>
 
         <View style={styles.big_container}>
           <View style={styles.icon}>
-            <Image
-            source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/768px-LinkedIn_icon.svg.png' }}
-            style={styles.icon_image}  
-          />
+            <TouchableOpacity onPress={OpenLinkLinkedIN}>
+              <Image
+                source={linkedInimage}
+                style={styles.icon_image}
+              />
+            </TouchableOpacity>
           </View>
           <View style={styles.icon}>
-            <Image
-            source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIZTinSnt5Egjs0eRQy98J_lxaNJSkml2DRQ&s' }}
-            style={styles.icon_image}  
-          />
+            <TouchableOpacity onPress={OpenLinkEmail}>
+              <Image
+                source={mailIcon}
+                style={styles.icon_image}
+              />
+            </TouchableOpacity>
           </View>
           <View style={styles.icon}>
-            <Image
-            source={{ uri: 'https://pngimg.com/d/github_PNG58.png' }}
-            style={styles.icon_image}  
-          />
+            <TouchableOpacity onPress={OpenLinkGithub}>
+              <Image
+                source={githubIcon}
+                style={styles.icon_image}
+              />
+            </TouchableOpacity>
           </View>
           <View style={styles.icon}>
-            <Image
-            source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs_tPm7gc-lt2P1fRtVk0rcXpBkw3srvEynw&s' }}
-            style={styles.icon_image}  
-          />
-
+            <TouchableOpacity onPress={OpenLinkOutlook}>
+              <Image
+                source={outLookIcon}
+                style={styles.icon_image}
+              />
+            </TouchableOpacity>
           </View>
         </View>
 
         <TouchableOpacity onPress={toggleHeight}>
           <View style={[styles.container_experience, { height }]}>
-            <Text style={styles.text}>Experiências</Text>
+            <Text style={styles.text_title}>Experiências</Text>
             <Text style={styles.text}>▃▃▃▃▃▃▃▃▃▃▃</Text>
             <Text style={styles.text}>╔═════════════════════════╗</Text>
             <Text style={styles.text}> ✦ Microsoft - DBA </Text>
@@ -74,26 +104,25 @@ const App = () => {
 
         <TouchableOpacity onPress={toggleHeight}>
           <View style={[styles.container_habilities, { height }]}>
-            <Text style={styles.text}>Habilidades</Text>
+            <Text style={styles.text_title}>Habilidades</Text>
             <Text style={styles.text}>▃▃▃▃▃▃▃▃▃▃▃</Text>
             <Text style={styles.text}>╔═════════════════════════╗</Text>
             <Text style={styles.text}> ✦ ETL </Text>
-            <Text style={{ color: 'white' }}> ✦ Scrum </Text>
-            <Text style={{ color: 'white' }}> ✦ DevOps </Text>
-
-            <Text style={{ color: 'white' }}>╚══════════════════════════╝ </Text>
+            <Text style={styles.text}> ✦ Scrum </Text>
+            <Text style={styles.text}> ✦ DevOps </Text>
+            <Text style={styles.text}>╚══════════════════════════╝ </Text>
           </View>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={toggleHeight}>
           <View style={[styles.container_tecnologies, { height }]}>
-            <Text style={{ color: 'white' }}>Tecnologias</Text>
-            <Text style={{ color: 'white' }}>▃▃▃▃▃▃▃▃▃▃▃</Text>
-            <Text style={{ color: 'white' }}>╔══════════════════════════╗</Text>
-            <Text style={{ color: 'white' }}> ✦ Python </Text>
-            <Text style={{ color: 'white' }}> ✦ Go </Text>
-            <Text style={{ color: 'white' }}> ✦ SQL </Text>
-            <Text style={{ color: 'white' }}>╚══════════════════════════╝ </Text>
+            <Text style={styles.text_title}>Tecnologias</Text>
+            <Text style={styles.text}>▃▃▃▃▃▃▃▃▃▃▃</Text>
+            <Text style={styles.text}>╔══════════════════════════╗</Text>
+            <Text style={styles.text}> ✦ Python </Text>
+            <Text style={styles.text}> ✦ Go </Text>
+            <Text style={styles.text}> ✦ SQL </Text>
+            <Text style={styles.text}>╚══════════════════════════╝ </Text>
           </View>
         </TouchableOpacity>
 
@@ -120,7 +149,8 @@ const styles = StyleSheet.create({
   image: {
     width: 120,
     height: 120,
-    backgroundColor: "#000",
+    borderWidth: 3,
+    borderColor:"#000",
     borderRadius: 100
   },
   container_namePrincipal: {
@@ -151,7 +181,6 @@ const styles = StyleSheet.create({
   icon: {
     width: 50,
     height: 50,
-    backgroundColor: "#000",
     margin: 10,
     borderRadius: 10
   },
@@ -187,6 +216,11 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#ffffffff"
+  },
+  text_title: {
+    fontWeight: 'bold',
+    color: "#ffffffff",
+    fontSize: 16
   }
 
 });
